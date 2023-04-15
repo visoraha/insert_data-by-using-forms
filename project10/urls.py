@@ -21,5 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('insert_topic/',insert_topic,name='insert_topic'),
     path('insert_web/',insert_web,name='insert_web'),
-    path('accessrec/',accessrec,name='accessrec')
+    path('accessrec/',accessrec,name='accessrec'),
+    path('retrive_data/',retrive_data,name='retrive_data'),
+    path('checkbox',checkbox,name='checkbox')
+    
+    
 ]

@@ -28,7 +28,6 @@ def accessrec(request):
     d={'access':ACR}
     if request.method=='POST':
         nm=request.POST['nm']
-        print(nm)
         au=request.POST['au']
         da=request.POST['da']
         W=Webpage.objects.get(name=nm)
@@ -36,3 +35,19 @@ def accessrec(request):
         AR.save()
         return HttpResponse('accessrecord data will be inserted')
     return render(request,'accessrec.html',d)
+def retrive_data(request):
+    LTO=Topic.objects.all()
+    d={'topics':LTO}
+    if request.method=='POST':
+        td=request.POST.getlist('topic')
+        webq=Webpage.objects.none()
+        for i in td:
+            webq=webq|Webpage.objects.filter(topic_name=i)
+        d1={'webpages':webq}
+        return render(request,'display_webpage.html',d1)
+
+    return render(request,'retrive_data.html',d)
+def checkbox(request):
+    LTO=Topic.objects.all()
+    d={'topics':LTO}
+    return render(request,'checkbox.html',d)
